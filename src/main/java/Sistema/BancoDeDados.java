@@ -15,16 +15,24 @@ public class BancoDeDados {
 	public static void remove(Conta c) {
 		contas.remove(c);
 	}
-	public static void contas() {
-		contas.forEach(System.out::println);
+	public static List<Conta> contas() {
+		return contas;
 	}
 	public static void moneytop() {
 		contas.sort((c1,c2) -> Double.compare(c2.getSaldo(),c1.getSaldo()));
 	}
-	public static void search(int id) {
-		contas.stream().filter(c -> c.getId()==id).forEach(System.out::println);
+	public static Conta search(int id) {
+		for(Conta c : contas){
+                    if(c.getId()==id)
+                        return c;
+                }
+                return null;
 	}
-	public static void search(String Cpf) {
-		contas.stream().filter(c -> c.getCpf().equals(Cpf)).forEach(System.out::println);
+	public static Conta search(String Cpf) {
+		for(Conta c : contas){
+                    if(c.getCpf().equals(Cpf))
+                        return c;
+                }
+                return null;
 	}
 }
