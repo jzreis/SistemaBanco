@@ -1,2 +1,2 @@
 # SistemaBanco
-Integrantes: Ruan, João, Lucas, Warley.
+Integrantes: Ruan, João, Lucas.
