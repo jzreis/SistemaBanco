@@ -4,7 +4,7 @@
  */
 package pacoteprincipal.sistemabanco;
 
-import Sistema.BancoDeDados;
+import sistema.BancoDeDados;
 
 /**
  *

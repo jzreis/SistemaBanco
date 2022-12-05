@@ -1,6 +1,6 @@
 package pacoteprincipal.sistemabanco;
-import Sistema.BancoDeDados;
-import Sistema.Conta;
+import sistema.BancoDeDados;
+import sistema.Conta;
 
 public class TelaCadastro extends javax.swing.JFrame {
 

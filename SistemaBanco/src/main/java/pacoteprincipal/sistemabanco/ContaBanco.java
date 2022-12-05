@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package pacoteprincipal.sistemabanco;
-import Sistema.BancoDeDados;
-import Sistema.Conta;
+import sistema.BancoDeDados;
+import sistema.Conta;
 import javax.swing.JOptionPane;
 
 public class ContaBanco extends javax.swing.JFrame {

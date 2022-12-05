@@ -1,4 +1,4 @@
-package Sistema;
+package sistema;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
