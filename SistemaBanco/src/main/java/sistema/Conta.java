@@ -100,7 +100,7 @@ public class Conta {
 
     @Override
     public String toString() {
-        return String.format("Titular da conta: %s \nId: %d \nCpf: %s \nSaldo: %.2f \nData de criacao: %s",
+        return String.format("\nTitular da conta: %s \nId: %d \nCpf: %s \nSaldo: %.2f \nData de criacao: %s\n",
                 this.getCliente(), this.getId(), this.getCpf(), this.getSaldo(), this.getData());
     }
 

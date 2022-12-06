@@ -39,7 +39,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        Cadastrar.setText("Cadastar");
+        Cadastrar.setText("Cadastrar");
         Cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CadastrarActionPerformed(evt);

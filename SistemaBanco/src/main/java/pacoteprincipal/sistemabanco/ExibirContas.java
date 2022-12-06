@@ -37,6 +37,7 @@ public class ExibirContas extends javax.swing.JFrame {
         BuscarCPF = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         ExibirInfo = new javax.swing.JTextArea();
+        MoneyTop = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Banco - BuscarContas");
@@ -78,6 +79,13 @@ public class ExibirContas extends javax.swing.JFrame {
         ExibirInfo.setRows(5);
         jScrollPane1.setViewportView(ExibirInfo);
 
+        MoneyTop.setText("Money top");
+        MoneyTop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MoneyTopActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,7 +98,7 @@ public class ExibirContas extends javax.swing.JFrame {
                         .addGap(174, 174, 174)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(ExibirTodas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(BotaoBuscarId, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -99,10 +107,12 @@ public class ExibirContas extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(BotaoBuscarCPF)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BuscarCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(BuscarCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(MoneyTop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addGap(39, 39, 39))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +132,9 @@ public class ExibirContas extends javax.swing.JFrame {
                             .addComponent(BotaoBuscarCPF)
                             .addComponent(BuscarCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ExibirTodas))
+                        .addComponent(ExibirTodas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(MoneyTop))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
@@ -131,26 +143,32 @@ public class ExibirContas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
-            TelaMenu tela = new TelaMenu();       
-            tela.setLocationRelativeTo(null);
-            tela.setResizable(false);
-            tela.setVisible(true);
-            ExibirContas.this.dispose();
+        TelaMenu tela = new TelaMenu();
+        tela.setLocationRelativeTo(null);
+        tela.setResizable(false);
+        tela.setVisible(true);
+        ExibirContas.this.dispose();
     }//GEN-LAST:event_VoltarActionPerformed
 
     private void BotaoBuscarCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoBuscarCPFActionPerformed
-      ExibirInfo.setText(String.valueOf(BancoDeDados.search(BuscarCPF.getText())));
-      BuscarCPF.setText("");
+        ExibirInfo.setText(String.valueOf(BancoDeDados.search(BuscarCPF.getText())));
+        BuscarCPF.setText("");
     }//GEN-LAST:event_BotaoBuscarCPFActionPerformed
 
     private void BotaoBuscarIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoBuscarIdActionPerformed
-      ExibirInfo.setText(String.valueOf(BancoDeDados.search(Integer.parseInt(BuscarId.getText()))));
-      BuscarId.setText("");
+        ExibirInfo.setText(String.valueOf(BancoDeDados.search(Integer.parseInt(BuscarId.getText()))));
+        BuscarId.setText("");
     }//GEN-LAST:event_BotaoBuscarIdActionPerformed
 
     private void ExibirTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExibirTodasActionPerformed
-      ExibirInfo.setText(String.valueOf(BancoDeDados.contas()));
+        BancoDeDados.ordenarId();
+        ExibirInfo.setText(String.valueOf(BancoDeDados.contas()));
     }//GEN-LAST:event_ExibirTodasActionPerformed
+
+    private void MoneyTopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MoneyTopActionPerformed
+        BancoDeDados.moneytop();
+        ExibirInfo.setText(String.valueOf(BancoDeDados.contas()));
+    }//GEN-LAST:event_MoneyTopActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,6 +212,7 @@ public class ExibirContas extends javax.swing.JFrame {
     private javax.swing.JTextField BuscarId;
     private javax.swing.JTextArea ExibirInfo;
     private javax.swing.JButton ExibirTodas;
+    private javax.swing.JButton MoneyTop;
     private javax.swing.JButton Voltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
