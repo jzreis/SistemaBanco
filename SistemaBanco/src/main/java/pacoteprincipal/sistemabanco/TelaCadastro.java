@@ -1,6 +1,8 @@
 package pacoteprincipal.sistemabanco;
+
 import sistema.BancoDeDados;
 import sistema.Conta;
+import javax.swing.JOptionPane;
 
 public class TelaCadastro extends javax.swing.JFrame {
 
@@ -112,16 +114,21 @@ public class TelaCadastro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed
-            TelaMenu tela = new TelaMenu();       
-            tela.setLocationRelativeTo(null);
-            tela.setResizable(false);
-            tela.setVisible(true);
-            TelaCadastro.this.dispose();
+        TelaMenu tela = new TelaMenu();
+        tela.setLocationRelativeTo(null);
+        tela.setResizable(false);
+        tela.setVisible(true);
+        TelaCadastro.this.dispose();
     }//GEN-LAST:event_VoltarActionPerformed
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
-        Conta conta = new Conta(Titular.getText(),CpfTitular.getText(),Senha.getText());
-        BancoDeDados.add(conta);
+        if (Senha.getText().equals("") || Titular.getText().equals("") || CpfTitular.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Certifique-se se preencheu todos os campos corretamnete!", "Alerta", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Conta conta = new Conta(Titular.getText(), CpfTitular.getText(), Senha.getText());
+            BancoDeDados.add(conta);
+        }
+
         Titular.setText("");
         CpfTitular.setText("");
         Senha.setText("");
